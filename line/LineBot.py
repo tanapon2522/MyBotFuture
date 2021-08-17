@@ -64,5 +64,20 @@ def handle_message(event):
                 event.reply_token,
                 TextSendMessage(text="เกิดข้อผิดพลาด {} ".format(e)))
 
+    elif "/l" in message_from_user:
+        # "/l 20 "
+        L_size = message_from_user.split(" ")[1]
+        try:
+            UpdateBotSetting(key="Lev",value=float(L_size))
+
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="การเปลี่ยนแปลงเสร็จสิ้น"))
+
+        except Exception as e:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="เกิดข้อผิดพลาด {} ".format(e)))
+
 
 

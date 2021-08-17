@@ -26,9 +26,10 @@ def ReceiveSignals(signal_data_dict):
     msg = ""
 
     amount = float(GetDataBotSetting(key="Positionsize"))
+    lev = float(GetDataBotSetting(key="Lev"))
 
     if Signal_Type == "OPEN":
-        PlaceOrderAtMarket(position=Signal_Side, symbol=Signal_Symbol, amount=amount, lev = 20)
+        PlaceOrderAtMarket(position=Signal_Side, symbol=Signal_Symbol, amount=amount, lev = lev)
         msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)
 
     elif Signal_Type == "CLOSE":

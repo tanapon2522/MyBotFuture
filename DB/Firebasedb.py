@@ -43,7 +43,7 @@ def UpdateBotSetting(key,value):
         db.child("BOTSETTINGS").update(data)
 
 def GetDataBotSetting(key):
-    res = db.get(user_n['idToken']).val()["BOTSETTINGS"][key]
+    res = db.get().val()["BOTSETTINGS"][key]
     return res
     
     

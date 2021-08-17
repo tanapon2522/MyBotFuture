@@ -25,7 +25,7 @@ firebaseConfig = {
 
 firebaseClient = Firebase(firebaseConfig)
 auth = firebaseClient.auth()
-user = auth.sign_in_with_email_and_password(os.getenv("FIREBASE_EMAIL"),os.getenv("FIREBASE_PASSWORD"))
+# user = auth.sign_in_with_email_and_password(os.getenv("FIREBASE_EMAIL"),os.getenv("FIREBASE_PASSWORD"))
 
 #ทดสอบ
 if __name__ == '__main__':

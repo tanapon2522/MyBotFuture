@@ -30,7 +30,7 @@ def getAssetUSDT():
     return int(result[1].balance)
 
 #< แก้ไข เพิ่ม function 6-27-2021
-def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=3,stoploss_Percent = 5):
+def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=10,stoploss_Percent = 10):
     """
     UPDATE LOGIC 6-27-2021 (ดูวิดิโอในกลุ่ม)
     position : Long or Short

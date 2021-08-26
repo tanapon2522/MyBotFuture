@@ -52,6 +52,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
         decimal = POS_SIZE.split(".")[1]
         
         dec_count = -1
+        len_count = len(decimal)
 
         # While loop เนื่องจาก เราจะต้องทำคำสั่งจนกว่าจะสำเร็จ ซึ่งสินค้าแต่ละประเภทอาจมี ทศนิยม ที่ต่างกัน
         # แอดมินแนะนำให้ทำแบบ การซื้อขาย Course 2 ที่สอนไปนะครับ แยกจำนวนเต็ม และ ทศนิยม แล้ว ค่อยๆตัดทศนิยม
@@ -73,7 +74,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
                     print(e.error_message)
                     #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ
                     amount = Interger + "." + decimal[:dec_count]                    
-                    if decimal[:dec_count] == "":
+                    if (len_count + dec_count) == 0:
                         amount = int(Interger)
                         print("amount lower")
                     dec_count = dec_count - 1
@@ -84,6 +85,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
         Interger = POS_SIZE.split(".")[0]
         decimal = POS_SIZE.split(".")[1]
         dec_count = -1
+        len_count = len(decimal)
 
         while True :        
             if float(act_price_LONG) > 0 :
@@ -105,7 +107,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
                     print(e.error_message)
                     #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ                    
                     act_price_LONG = Interger + "." + decimal[:dec_count]
-                    if decimal[:dec_count] == "":
+                    if (len_count + dec_count) == 0:
                         act_price_LONG = int(Interger)
                     dec_count = dec_count - 1 
                         
@@ -116,6 +118,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
         Interger = POS_SIZE.split(".")[0]
         decimal = POS_SIZE.split(".")[1]
         dec_count = -1 
+        len_count = len(decimal)
 
         while True :
             if float(stoplosePrice) > 0 :
@@ -135,7 +138,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
                     print(e.error_message)
                     #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ
                     stoplosePrice = Interger + "." + decimal[:dec_count]                    
-                    if decimal[:dec_count] == "":
+                    if (len_count + dec_count) == 0:
                         stoplosePrice = int(Interger)
                     dec_count = dec_count - 1 
 
@@ -148,6 +151,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
         Interger = POS_SIZE.split(".")[0]
         decimal = POS_SIZE.split(".")[1]
         dec_count = -1
+        len_count = len(decimal)
 
         # While loop เนื่องจาก เราจะต้องทำคำสั่งจนกว่าจะสำเร็จ ซึ่งสินค้าแต่ละประเภทอาจมี ทศนิยม ที่ต่างกัน
         # แอดมินแนะนำให้ทำแบบ การซื้อขาย Course 2 ที่สอนไปนะครับ แยกจำนวนเต็ม และ ทศนิยม แล้ว ค่อยๆตัดทศนิยม
@@ -170,7 +174,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
                     print(e.error_message)
                     #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ
                     amount = Interger + "." + decimal[:dec_count]                    
-                    if decimal[:dec_count] == "":
+                    if (len_count + dec_count) == 0:
                         amount = int(Interger)
                         print("amount lower")
                     dec_count = dec_count - 1
@@ -180,6 +184,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
         Interger = POS_SIZE.split(".")[0]
         decimal = POS_SIZE.split(".")[1]
         dec_count = -1
+        len_count = len(decimal)
 
         while True :
             if float(act_price_SHORT) > 0 :
@@ -201,7 +206,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
                     print(e.error_message)
                     #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ                    
                     act_price_SHORT = Interger + "." + decimal[:dec_count]
-                    if decimal[:dec_count] == "":
+                    if (len_count + dec_count) == 0:
                         act_price_SHORT = int(Interger)
                     dec_count = dec_count - 1 
                     
@@ -210,6 +215,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
         Interger = POS_SIZE.split(".")[0]
         decimal = POS_SIZE.split(".")[1]
         dec_count = -1 
+        len_count = len(decimal)
 
         while True :
             if float(stoplosePrice) > 0 :
@@ -229,7 +235,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
                     print(e.error_message)
                     #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ
                     stoplosePrice = Interger + "." + decimal[:dec_count]                    
-                    if decimal[:dec_count] == "":
+                    if (len_count + dec_count) == 0:
                         stoplosePrice = int(Interger)
                     dec_count = dec_count - 1 
                     

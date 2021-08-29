@@ -44,7 +44,12 @@ def UpdateBotSetting(key,value):
     elif key == "Lev":
         data = { "Lev" : value }
         db.child("BOTSETTINGS").update(data)
-
+    elif key == "CShort":
+        data = { "CShort" : value }
+        db.child("BOTSETTINGS").update(data)
+    elif key == "CLong":
+        data = { "CLong" : value }
+        db.child("BOTSETTINGS").update(data)
 
 def GetDataBotSetting(key):
     res = db.get().val()["BOTSETTINGS"][key]

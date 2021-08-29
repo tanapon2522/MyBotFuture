@@ -4,15 +4,15 @@ from BinanceTrade.Trade import ReceiveSignals
 if __name__ == "__main__":
 
 
-    # data = {
-    #     "message":"CLOSE LONG",
-    #     "symbol":"BTCUSDT"
-    #     }
-    # msg = ReceiveSignals(signal_data_dict = data )
-    # print(msg)
+    data = {
+        "message":"OPEN LONG",
+        "symbol":"RAYUSDT"
+        }
+    msg = ReceiveSignals(signal_data_dict = data )
+    print(msg)
 
-    from line.notify import notify
-    notify.send("TESTFUTURE")
+    # from line.notify import notify
+    # notify.send("TESTFUTURE")
 
     # res = get_market_data_by_symbol(symbol="BTCUSDT")
     # print(res["markPrice"])
@@ -24,11 +24,11 @@ if __name__ == "__main__":
 
     # PlaceOrderAtMarket(
     #     position='SHORT',         
-    #     symbol='SOLUSDT', 
-    #     amount=20
+    #     symbol='SOLUSDT',      
     # )
 
-    # res = getPositionbySymbol(Symbol="BTCUSDT")
+    #res = getPositionbySymbol(Symbol="RAYUSDT")
+    #print(res)
     # print(res['positionAmt'])
 
     # ClosePositionAtmarket(symbol="BTCUSDT", positionSide="SHORT")

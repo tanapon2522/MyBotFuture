@@ -21,9 +21,16 @@ def SIGNALS_RECEIVER():
         if GetDataBotSetting(key="run") == True:
             # get data firebase เพื่อดูว่า Autotrading = True??
             msg = ReceiveSignals(signal_data_dict = json_msg)
-        sendmsg(msg=json.dumps(json_msg))
-        sendmsg(msg=msg)
         
+        cbuy =GetDataBotSetting(key="CBuy")
+        csell =GetDataBotSetting(key="CSell")
+
+        if (json_msg["SIGNALS"]=="buy") and cbuy:
+            sendmsg(msg=json.dumps(json_msg))
+            sendmsg(msg=msg)
+        elif (json_msg["SIGNALS"]=="sell") and csell:
+            sendmsg(msg=json.dumps(json_msg))
+            sendmsg(msg=msg)
 
         # สร้างฟังก์ชั่น ในการจัดการข้อมูล
 

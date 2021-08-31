@@ -1,14 +1,33 @@
 from BinanceTrade.FutureTrade import *
 from BinanceTrade.Trade import ReceiveSignals
 
+from line.notify import sendmsg
+from DB.Firebasedb import GetDataBotSetting , UpdateBotSetting
+
+
 if __name__ == "__main__":
 
 
-    data = {
-        "message":"OPEN LONG",
-        "symbol":"RAYUSDT"
+    json_msg = {
+        "message":"OPEN SHORT",
+        "symbol":"TLMUSDT"
         }
-    msg = ReceiveSignals(signal_data_dict = data )
+    msg = ReceiveSignals(signal_data_dict = json_msg )
+
+    clong =GetDataBotSetting(key="CLong")
+    cshort =GetDataBotSetting(key="CShort")
+    Signal_Side = json_msg["message"].split(" ")[1]
+
+    if (Signal_Side=="LONG") and clong:
+        sendmsg(msg=json.dumps(json_msg))
+        sendmsg(msg=msg)
+        UpdateBotSetting(key="CLong",value=False)
+        UpdateBotSetting(key="CShort",value=True)
+    elif (Signal_Side=="SHORT") and cshort:
+        sendmsg(msg=json.dumps(json_msg))
+        sendmsg(msg=msg)
+        UpdateBotSetting(key="CShort",value=False)
+        UpdateBotSetting(key="CLong",value=True)
     print(msg)
 
     # from line.notify import notify

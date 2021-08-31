@@ -24,7 +24,7 @@ def SIGNALS_RECEIVER():
         
         clong =GetDataBotSetting(key="CLong")
         cshort =GetDataBotSetting(key="CShort")
-        Signal_Side = json_msg["SIGNALS"].split(" ")[1]
+        Signal_Side = json_msg["message"].split(" ")[1]
 
         if (Signal_Side=="LONG") and clong:
             sendmsg(msg=json.dumps(json_msg))

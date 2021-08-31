@@ -6,7 +6,7 @@ try :
 except Exception:
     from config_prod import API_BINANCE_KEY , API_BINANCE_SECRET
 
-from DB.Firebasedb import GetDataBotSetting , UpdateBotSetting
+from DB.Firebasedb import GetDataBotSetting 
 
 client = Client( API_BINANCE_KEY , API_BINANCE_SECRET )
 
@@ -33,14 +33,10 @@ def ReceiveSignals(signal_data_dict):
 
     if Signal_Type == "OPEN":
         if (Signal_Side == "SHORT") and (cshort):
-            UpdateBotSetting(key="CShort",value=False)
-            UpdateBotSetting(key="CLong",value=True)
             PlaceOrderAtMarket(position=Signal_Side, symbol=Signal_Symbol, amount=amount, lev = lev)
             msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)   
             
         if (Signal_Side == "LONG") and (clong):
-            UpdateBotSetting(key="CShort",value=True)
-            UpdateBotSetting(key="CLong",value=False)
             PlaceOrderAtMarket(position=Signal_Side, symbol=Signal_Symbol, amount=amount, lev = lev)
             msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)
         

@@ -24,17 +24,18 @@ def SIGNALS_RECEIVER():
         
         clong =GetDataBotSetting(key="CLong")
         cshort =GetDataBotSetting(key="CShort")
+        Signal_Side = json_msg["SIGNALS"].split(" ")[1]
 
-        if (json_msg["SIGNALS"]=="OPEN LONG") and clong:
+        if (Signal_Side=="LONG") and clong:
+            sendmsg(msg=json.dumps(json_msg))
+            sendmsg(msg=msg)
             UpdateBotSetting(key="CLong",value=False)
             UpdateBotSetting(key="CShort",value=True)
+        elif (Signal_Side=="SHORT") and cshort:
             sendmsg(msg=json.dumps(json_msg))
             sendmsg(msg=msg)
-        elif (json_msg["SIGNALS"]=="OPEN SHORT") and cshort:
             UpdateBotSetting(key="CShort",value=False)
             UpdateBotSetting(key="CLong",value=True)
-            sendmsg(msg=json.dumps(json_msg))
-            sendmsg(msg=msg)
 
         # สร้างฟังก์ชั่น ในการจัดการข้อมูล
 

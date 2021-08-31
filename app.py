@@ -25,12 +25,12 @@ def SIGNALS_RECEIVER():
         clong =GetDataBotSetting(key="CLong")
         cshort =GetDataBotSetting(key="CShort")
 
-        if (json_msg["SIGNALS"]=="LONG") and clong:
-            UpdateBotSetting(key="CShort",value=True)
+        if (json_msg["SIGNALS"]=="OPEN LONG") and clong:
             UpdateBotSetting(key="CLong",value=False)
+            UpdateBotSetting(key="CShort",value=True)
             sendmsg(msg=json.dumps(json_msg))
             sendmsg(msg=msg)
-        elif (json_msg["SIGNALS"]=="SHORT") and cshort:
+        elif (json_msg["SIGNALS"]=="OPEN SHORT") and cshort:
             UpdateBotSetting(key="CShort",value=False)
             UpdateBotSetting(key="CLong",value=True)
             sendmsg(msg=json.dumps(json_msg))

@@ -5,7 +5,7 @@ if __name__ == "__main__":
 
 
     data = {
-        "message":"OPEN SHORT",
+        "message":"OPEN LONG",
         "symbol":"RAYUSDT"
         }
     msg = ReceiveSignals(signal_data_dict = data )

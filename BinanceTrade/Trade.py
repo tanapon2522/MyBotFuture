@@ -43,9 +43,9 @@ def ReceiveSignals(signal_data_dict):
             msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)
         
             
-    # elif Signal_Type == "CLOSE":
-    #     ClosePositionAtmarket(symbol=Signal_Symbol, positionSide=Signal_Side)
-    #     msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)
+    elif Signal_Type == "CLOSE":
+        ClosePositionAtmarket(symbol=Signal_Symbol, positionSide=Signal_Side)
+        msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)
         
     return msg
 

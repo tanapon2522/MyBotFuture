@@ -24,19 +24,29 @@ def SIGNALS_RECEIVER():
         
         clong =GetDataBotSetting(key="CLong")
         cshort =GetDataBotSetting(key="CShort")
+        Signal_Type = json_msg["message"].split(" ")[0]
         Signal_Side = json_msg["message"].split(" ")[1]
-
-        if (Signal_Side=="LONG") and clong:
-            sendmsg(msg=json.dumps(json_msg))
-            sendmsg(msg=msg)
-            UpdateBotSetting(key="CLong",value=False)
-            UpdateBotSetting(key="CShort",value=True)
-        elif (Signal_Side=="SHORT") and cshort:
-            sendmsg(msg=json.dumps(json_msg))
-            sendmsg(msg=msg)
-            UpdateBotSetting(key="CShort",value=False)
-            UpdateBotSetting(key="CLong",value=True)
-
+        if Signal_Type == "OPEN":
+            if (Signal_Side=="LONG") and clong:
+                sendmsg(msg=json.dumps(json_msg))
+                sendmsg(msg=msg)
+                UpdateBotSetting(key="CLong",value=False)
+                UpdateBotSetting(key="CShort",value=True)
+            elif (Signal_Side=="SHORT") and cshort:
+                sendmsg(msg=json.dumps(json_msg))
+                sendmsg(msg=msg)
+                UpdateBotSetting(key="CShort",value=False)
+                UpdateBotSetting(key="CLong",value=True)
+        elif Signal_Type == "CLOSE":
+            if (Signal_Side=="LONG") and not clong:
+                sendmsg(msg=json.dumps(json_msg))
+                sendmsg(msg=msg)
+                UpdateBotSetting(key="CLong",value=True)
+                
+            elif (Signal_Side=="SHORT") and not cshort:
+                sendmsg(msg=json.dumps(json_msg))
+                sendmsg(msg=msg)
+                UpdateBotSetting(key="CShort",value=True)    
         # สร้างฟังก์ชั่น ในการจัดการข้อมูล
 
         # """

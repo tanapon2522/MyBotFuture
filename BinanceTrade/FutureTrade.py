@@ -37,10 +37,10 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
     amount : จำนวน USDT ที่ต้องการใช้ในการซื้อ
     """
 
-    CancelAllOrder(symbol = symbol)
+    CancelAllOrder(symbol = symbol)  
     current_price = float(get_market_data_by_symbol(symbol)["markPrice"])
-    amount = (amount* lev)/current_price
     change_leverage(symbol=symbol,lev=lev)
+    amount = (amount* lev)/current_price
 
     if position == "LONG":        
         act_price_LONG = float(current_price * (1 + act_price_percent/100))

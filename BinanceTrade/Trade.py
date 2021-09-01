@@ -33,10 +33,12 @@ def ReceiveSignals(signal_data_dict):
 
     if Signal_Type == "OPEN":
         if (Signal_Side == "SHORT") and (cshort):
+            ClosePositionAtmarket(symbol=Signal_Symbol, positionSide="LONG")
             PlaceOrderAtMarket(position=Signal_Side, symbol=Signal_Symbol, amount=amount, lev = lev)
             msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)   
             
         elif (Signal_Side == "LONG") and (clong):
+            ClosePositionAtmarket(symbol=Signal_Symbol, positionSide="SHORT")
             PlaceOrderAtMarket(position=Signal_Side, symbol=Signal_Symbol, amount=amount, lev = lev)
             msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)
         

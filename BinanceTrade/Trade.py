@@ -50,8 +50,18 @@ def ReceiveSignals(signal_data_dict):
         
             
     elif Signal_Type == "CLOSE":
-        ClosePositionAtmarket(symbol=Signal_Symbol, positionSide=Signal_Side)
-        msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)
-        
+        if (Signal_Side == "SHORT") and not (cshort):
+            try :
+                ClosePositionAtmarket(symbol=Signal_Symbol, positionSide=Signal_Side)            
+            except Exception as e :
+                    print(e.error_message)
+            msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)
+        elif (Signal_Side == "LONG") and not (clong):
+            try :
+                ClosePositionAtmarket(symbol=Signal_Symbol, positionSide=Signal_Side)            
+            except Exception as e :
+                    print(e.error_message)
+            msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)
+            
     return msg
 

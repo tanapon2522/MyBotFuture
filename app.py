@@ -41,12 +41,10 @@ def SIGNALS_RECEIVER():
             if (Signal_Side=="LONG") and not clong:
                 sendmsg(msg=json.dumps(json_msg))
                 sendmsg(msg=msg)
-                UpdateBotSetting(key="CLong",value=True)
-                
+                                
             elif (Signal_Side=="SHORT") and not cshort:
                 sendmsg(msg=json.dumps(json_msg))
-                sendmsg(msg=msg)
-                UpdateBotSetting(key="CShort",value=True)    
+                sendmsg(msg=msg)                
         # สร้างฟังก์ชั่น ในการจัดการข้อมูล
 
         # """

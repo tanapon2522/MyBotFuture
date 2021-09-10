@@ -43,7 +43,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=2,sto
     amount = (amount* lev)/current_price
 
     if position == "LONG":        
-        act_price_LONG = float(current_price * (1 + act_price_percent/100))
+        act_price_LONG = float(current_price) # * (1 + act_price_percent/100))
         stoplosePrice = float(current_price * (1 - stoploss_Percent/100))
 
         POS_SIZE = str(amount)

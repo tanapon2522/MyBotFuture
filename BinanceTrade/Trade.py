@@ -6,7 +6,7 @@ try :
 except Exception:
     from config_prod import API_BINANCE_KEY , API_BINANCE_SECRET
 
-from DB.Firebasedb import GetDataBotSetting 
+from DB.Firebasedb import GetDataBotSetting , UpdateBotSetting
 
 client = Client( API_BINANCE_KEY , API_BINANCE_SECRET )
 
@@ -32,6 +32,11 @@ def ReceiveSignals(signal_data_dict):
 
 
     if Signal_Type == "OPEN":
+        if getPositionbySymbol(Signal_Symbol)['positionAmt'] == 0 :
+            UpdateBotSetting(key="CLong",value=True)
+            UpdateBotSetting(key="CShort",value=True)
+            cshort = GetDataBotSetting(key="CShort")
+            clong = GetDataBotSetting(key="CLong")
         if (Signal_Side == "SHORT") and (cshort):
             try :
                 ClosePositionAtmarket(symbol=Signal_Symbol, positionSide="LONG")

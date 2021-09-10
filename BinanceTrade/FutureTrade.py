@@ -266,4 +266,5 @@ def ClosePositionAtmarket(symbol,positionSide):
             positionSide="BOTH",
             quantity=str(abs(float(amount)))
         )
+    CancelAllOrder(symbol = symbol)
 

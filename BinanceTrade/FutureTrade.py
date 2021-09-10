@@ -30,7 +30,7 @@ def getAssetUSDT():
     return int(result[1].balance)
 
 #< แก้ไข เพิ่ม function 6-27-2021
-def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,stoploss_Percent =5):
+def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=2,stoploss_Percent =5):
     """
     UPDATE LOGIC 6-27-2021 (ดูวิดิโอในกลุ่ม)
     position : Long or Short
@@ -80,36 +80,36 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
                     dec_count = dec_count - 1
 
         
-        # POS_SIZE = str(act_price_LONG)
+        POS_SIZE = str(act_price_LONG)
             
-        # Interger = POS_SIZE.split(".")[0]
-        # decimal = POS_SIZE.split(".")[1]
-        # dec_count = -1
-        # len_count = len(decimal)
+        Interger = POS_SIZE.split(".")[0]
+        decimal = POS_SIZE.split(".")[1]
+        dec_count = -1
+        len_count = len(decimal)
 
-        # while True :        
-        #     if float(act_price_LONG) > 0 :
-        #         try :
-        #             # trailing stop loss ควรทำแบบ While loop ด้านบนเช่นกัน
-        #             result = request_client.post_order(
-        #                 symbol = symbol ,
-        #                 side = OrderSide.SELL ,
-        #                 positionSide = "BOTH" ,
-        #                 ordertype = OrderType.TRAILING_STOP_MARKET,
-        #                 activationPrice=act_price_LONG,
-        #                 callbackRate= cb,
-        #                 reduceOnly = True ,
-        #                 quantity = amount
-        #             )
-        #             # break ออกจาก loop ถ้าหาก เนื่องจากทำคำสั่งสำเร็จ
-        #             break
-        #         except Exception as e: # ตรวจจับว่า เป้นกรณี code -1111 คือ ทศนิยมผิดพลาดหรือไม่ ลองไปทดสอบดูนะครับ
-        #             print(e.error_message)
-        #             #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ                    
-        #             act_price_LONG = Interger + "." + decimal[:dec_count]
-        #             if (len_count + dec_count) == 0:
-        #                 act_price_LONG = int(Interger)
-        #             dec_count = dec_count - 1 
+        while True :        
+            if float(act_price_LONG) > 0 :
+                try :
+                    # trailing stop loss ควรทำแบบ While loop ด้านบนเช่นกัน
+                    result = request_client.post_order(
+                        symbol = symbol ,
+                        side = OrderSide.SELL ,
+                        positionSide = "BOTH" ,
+                        ordertype = OrderType.TRAILING_STOP_MARKET,
+                        activationPrice=act_price_LONG,
+                        callbackRate= cb,
+                        reduceOnly = True ,
+                        quantity = amount
+                    )
+                    # break ออกจาก loop ถ้าหาก เนื่องจากทำคำสั่งสำเร็จ
+                    break
+                except Exception as e: # ตรวจจับว่า เป้นกรณี code -1111 คือ ทศนิยมผิดพลาดหรือไม่ ลองไปทดสอบดูนะครับ
+                    print(e.error_message)
+                    #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ                    
+                    act_price_LONG = Interger + "." + decimal[:dec_count]
+                    if (len_count + dec_count) == 0:
+                        act_price_LONG = int(Interger)
+                    dec_count = dec_count - 1 
                         
 
         
@@ -179,36 +179,36 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=5,sto
                         print("amount lower")
                     dec_count = dec_count - 1
 
-        # POS_SIZE = str(act_price_SHORT)
+        POS_SIZE = str(act_price_SHORT)
             
-        # Interger = POS_SIZE.split(".")[0]
-        # decimal = POS_SIZE.split(".")[1]
-        # dec_count = -1
-        # len_count = len(decimal)
+        Interger = POS_SIZE.split(".")[0]
+        decimal = POS_SIZE.split(".")[1]
+        dec_count = -1
+        len_count = len(decimal)
 
-        # while True :
-        #     if float(act_price_SHORT) > 0 :
-        #         try :
-        #             # trailing stop loss ควรทำแบบ While loop ด้านบนเช่นกัน
-        #             result = request_client.post_order(
-        #                 symbol = symbol ,
-        #                 side = OrderSide.BUY ,
-        #                 positionSide = "BOTH" ,
-        #                 ordertype = OrderType.TRAILING_STOP_MARKET,
-        #                 activationPrice=act_price_SHORT,
-        #                 callbackRate= cb,
-        #                 reduceOnly = True ,
-        #                 quantity = amount
-        #             )
-        #             # break ออกจาก loop ถ้าหาก เนื่องจากทำคำสั่งสำเร็จ
-        #             break
-        #         except Exception as e: # ตรวจจับว่า เป้นกรณี code -1111 คือ ทศนิยมผิดพลาดหรือไม่ ลองไปทดสอบดูนะครับ
-        #             print(e.error_message)
-        #             #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ                    
-        #             act_price_SHORT = Interger + "." + decimal[:dec_count]
-        #             if (len_count + dec_count) == 0:
-        #                 act_price_SHORT = int(Interger)
-        #             dec_count = dec_count - 1 
+        while True :
+            if float(act_price_SHORT) > 0 :
+                try :
+                    # trailing stop loss ควรทำแบบ While loop ด้านบนเช่นกัน
+                    result = request_client.post_order(
+                        symbol = symbol ,
+                        side = OrderSide.BUY ,
+                        positionSide = "BOTH" ,
+                        ordertype = OrderType.TRAILING_STOP_MARKET,
+                        activationPrice=act_price_SHORT,
+                        callbackRate= cb,
+                        reduceOnly = True ,
+                        quantity = amount
+                    )
+                    # break ออกจาก loop ถ้าหาก เนื่องจากทำคำสั่งสำเร็จ
+                    break
+                except Exception as e: # ตรวจจับว่า เป้นกรณี code -1111 คือ ทศนิยมผิดพลาดหรือไม่ ลองไปทดสอบดูนะครับ
+                    print(e.error_message)
+                    #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ                    
+                    act_price_SHORT = Interger + "." + decimal[:dec_count]
+                    if (len_count + dec_count) == 0:
+                        act_price_SHORT = int(Interger)
+                    dec_count = dec_count - 1 
                     
         # POS_SIZE = str(stoplosePrice)
             

@@ -33,10 +33,13 @@ def ReceiveSignals(signal_data_dict):
 
     if Signal_Type == "OPEN":
         if getPositionbySymbol(Signal_Symbol)['positionAmt'] == 0 :
-            UpdateBotSetting(key="CLong",value=True)
-            UpdateBotSetting(key="CShort",value=True)
-            cshort = GetDataBotSetting(key="CShort")
-            clong = GetDataBotSetting(key="CLong")
+            if (Signal_Side == "SHORT") and (cshort):
+                UpdateBotSetting(key="CShort",value=True)
+                cshort = GetDataBotSetting(key="CShort")
+            elif (Signal_Side == "LONG") and (clong):        
+                UpdateBotSetting(key="CLong",value=True)
+                clong = GetDataBotSetting(key="CLong")
+                
         if (Signal_Side == "SHORT") and (cshort):
             try :
                 ClosePositionAtmarket(symbol=Signal_Symbol, positionSide="LONG")
@@ -55,6 +58,15 @@ def ReceiveSignals(signal_data_dict):
         
             
     elif Signal_Type == "CLOSE":
+        if getPositionbySymbol(Signal_Symbol)['positionAmt'] == 0 :
+            if (Signal_Side == "SHORT") and not (cshort):
+                UpdateBotSetting(key="CShort",value=True)
+                cshort = GetDataBotSetting(key="CShort")
+
+            elif (Signal_Side == "LONG") and not (clong):    
+                UpdateBotSetting(key="CLong",value=True)
+                clong = GetDataBotSetting(key="CLong")
+
         if (Signal_Side == "SHORT") and not (cshort):
             try :
                 ClosePositionAtmarket(symbol=Signal_Symbol, positionSide=Signal_Side)            

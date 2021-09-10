@@ -30,21 +30,21 @@ def getAssetUSDT():
     return int(result[1].balance)
 
 #< แก้ไข เพิ่ม function 6-27-2021
-def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.1,cb=2,stoploss_Percent =5):
+def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.001,cb=2,stoploss_Percent =5):
     """
     UPDATE LOGIC 6-27-2021 (ดูวิดิโอในกลุ่ม)
     position : Long or Short
     amount : จำนวน USDT ที่ต้องการใช้ในการซื้อ
     """
 
-    #CancelAllOrder(symbol = symbol)  
+    CancelAllOrder(symbol = symbol)  
     current_price = float(get_market_data_by_symbol(symbol)["markPrice"])
     change_leverage(symbol=symbol,lev=lev)
     amount = (amount* lev)/current_price
 
     if position == "LONG":        
-        act_price_LONG = float(current_price) # * (1 + act_price_percent/100))
-        stoplosePrice = float(current_price * (1 - stoploss_Percent/100))
+        act_price_LONG = float(current_price * (1 + act_price_percent/1000))
+        stoplosePrice = float(current_price * (1 - stoploss_Percent/1000))
 
         POS_SIZE = str(amount)
             

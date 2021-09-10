@@ -17,7 +17,7 @@ def SIGNALS_RECEIVER():
         msg = request.data.decode("utf-8")
         json_msg = json.loads(msg)
         print(json_msg) # <-- dictionary
-
+        
         if GetDataBotSetting(key="run") == True:
             # get data firebase เพื่อดูว่า Autotrading = True??
             msg = ReceiveSignals(signal_data_dict = json_msg)

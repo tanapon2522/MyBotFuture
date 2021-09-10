@@ -10,8 +10,8 @@ if __name__ == "__main__":
 
 
     json_msg = {
-        "message":"OPEN SHORT",
-        "symbol":"IOTAUSDT"
+        "message":"OPEN LONG",
+        "symbol":"FTMUSDT"
         }
     msg = ReceiveSignals(signal_data_dict = json_msg )
 

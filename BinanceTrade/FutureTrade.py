@@ -30,7 +30,7 @@ def getAssetUSDT():
     return int(result[1].balance)
 
 #< แก้ไข เพิ่ม function 6-27-2021
-def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=2,stoploss_Percent =5):
+def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.001,cb=2,stoploss_Percent =5):
     """
     UPDATE LOGIC 6-27-2021 (ดูวิดิโอในกลุ่ม)
     position : Long or Short
@@ -43,8 +43,8 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=2,st
     amount = (amount* lev)/current_price
 
     if position == "LONG":        
-        act_price_LONG = float(current_price * (1 + act_price_percent/100))
-        stoplosePrice = float(current_price * (1 - stoploss_Percent/100))
+        act_price_LONG = float(current_price * (1 + act_price_percent/1000))
+        stoplosePrice = float(current_price * (1 - stoploss_Percent/1000))
 
         POS_SIZE = str(amount)
             
@@ -143,8 +143,8 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=2,st
         #             dec_count = dec_count - 1 
 
     if position == "SHORT":
-        act_price_SHORT = float(current_price * (1 - act_price_percent/100))
-        stoplosePrice = float(current_price * (1 + stoploss_Percent/100))
+        act_price_SHORT = float(current_price * (1 - act_price_percent/1000))
+        stoplosePrice = float(current_price * (1 + stoploss_Percent/1000))
 
         POS_SIZE = str(amount)
             

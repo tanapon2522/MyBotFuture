@@ -58,13 +58,13 @@ def ReceiveSignals(signal_data_dict):
         
             
     elif Signal_Type == "CLOSE":
-        if getPositionbySymbol(Signal_Symbol)['positionAmt'] != 0 :
-            if (Signal_Side == "SHORT") and  (cshort):
-                UpdateBotSetting(key="CShort",value=False)
+        if getPositionbySymbol(Signal_Symbol)['positionAmt'] == 0 :
+            if (Signal_Side == "SHORT") and not (cshort):
+                UpdateBotSetting(key="CShort",value=True)
                 cshort = GetDataBotSetting(key="CShort")
 
-            elif (Signal_Side == "LONG") and (clong):    
-                UpdateBotSetting(key="CLong",value=False)
+            elif (Signal_Side == "LONG") and not (clong):    
+                UpdateBotSetting(key="CLong",value=True)
                 clong = GetDataBotSetting(key="CLong")
         
 

@@ -39,6 +39,10 @@ def ReceiveSignals(signal_data_dict):
             elif (Signal_Side == "LONG") and not (clong):        
                 UpdateBotSetting(key="CLong",value=True)
                 clong = GetDataBotSetting(key="CLong")
+            try :
+                CancelAllOrder(symbol = Signal_Symbol) 
+            except Exception as e :
+                print(e.error_message)
                 
         if (Signal_Side == "SHORT") and (cshort):
             try :

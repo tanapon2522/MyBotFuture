@@ -39,10 +39,10 @@ def ReceiveSignals(signal_data_dict):
             elif (Signal_Side == "LONG") and not (clong):        
                 UpdateBotSetting(key="CLong",value=True)
                 clong = GetDataBotSetting(key="CLong")
-            try :
-                CancelAllOrder(symbol = Signal_Symbol) 
-            except Exception as e :
-                print(e.error_message)
+            # try :
+            #     CancelAllOrder(symbol = Signal_Symbol) 
+            # except Exception as e :
+            #     print(e.error_message)
                 
         if (Signal_Side == "SHORT") and (cshort):
             try :
@@ -54,7 +54,7 @@ def ReceiveSignals(signal_data_dict):
             
         elif (Signal_Side == "LONG") and (clong):
             try :
-                ClosePositionAtmarket(symbol=Signal_Symbol, positionSide="SHORT")
+                ClosePositionAtmarket(symbol=Signal_Symbol, positionSide="SHORT")                
             except Exception as e :
                 print(e.error_message)
             PlaceOrderAtMarket(position=Signal_Side, symbol=Signal_Symbol, amount=amount, lev = lev)

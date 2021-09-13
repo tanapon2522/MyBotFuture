@@ -66,7 +66,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=1,st
                         side = OrderSide.BUY ,
                         positionSide = "BOTH" ,
                         ordertype=OrderType.MARKET ,
-                        quantity = amount # 0.02 --> 0.019999999
+                        quantity = float(amount) # 0.02 --> 0.019999999
                     )
                     # break ออกจาก loop ถ้าหาก เนื่องจากทำคำสั่งสำเร็จ
                     break
@@ -96,10 +96,10 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=1,st
                         side = OrderSide.SELL ,
                         positionSide = "BOTH" ,
                         ordertype = OrderType.TRAILING_STOP_MARKET,
-                        activationPrice=act_price_LONG,
+                        activationPrice=float(act_price_LONG),
                         callbackRate= cb,
                         reduceOnly = True ,
-                        quantity = amount
+                        quantity = float(amount)
                     )
                     # break ออกจาก loop ถ้าหาก เนื่องจากทำคำสั่งสำเร็จ
                     break
@@ -165,7 +165,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=1,st
                         side = OrderSide.SELL ,
                         positionSide = "BOTH" ,
                         ordertype=OrderType.MARKET ,
-                        quantity = amount # 0.02 --> 0.019999999
+                        quantity = float(amount) # 0.02 --> 0.019999999
                     )
                     # break ออกจาก loop ถ้าหาก เนื่องจากทำคำสั่งสำเร็จ
                     break
@@ -195,10 +195,10 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=1,st
                         side = OrderSide.BUY ,
                         positionSide = "BOTH" ,
                         ordertype = OrderType.TRAILING_STOP_MARKET,
-                        activationPrice=act_price_SHORT,
+                        activationPrice=float(act_price_SHORT),
                         callbackRate= cb,
                         reduceOnly = True ,
-                        quantity = amount
+                        quantity = float(amount)
                     )
                     # break ออกจาก loop ถ้าหาก เนื่องจากทำคำสั่งสำเร็จ
                     break

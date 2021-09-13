@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     json_msg = {
         "message":"CLOSE LONG",
-        "symbol":"FTMUSDT"
+        "symbol":"SRMUSDT"
         }
     msg = ReceiveSignals(signal_data_dict = json_msg )
 

@@ -96,7 +96,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=1,st
                         side = OrderSide.SELL ,
                         positionSide = "BOTH" ,
                         ordertype = OrderType.TRAILING_STOP_MARKET,
-                        activationPrice=float(act_price_LONG),
+                        #activationPrice=float(act_price_LONG),
                         callbackRate= cb,
                         reduceOnly = True ,
                         quantity = float(amount)
@@ -108,7 +108,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=1,st
                     #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ                    
                     act_price_LONG = Interger + "." + decimal[:dec_count]
                     if (len_count + dec_count) == 0:
-                        act_price_LONG = int(Interger)
+                        act_price_LONG = int(Interger)                        
                     dec_count = dec_count - 1 
                         
 
@@ -195,7 +195,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=1,st
                         side = OrderSide.BUY ,
                         positionSide = "BOTH" ,
                         ordertype = OrderType.TRAILING_STOP_MARKET,
-                        activationPrice=float(act_price_SHORT),
+                        #activationPrice=float(act_price_SHORT),
                         callbackRate= cb,
                         reduceOnly = True ,
                         quantity = float(amount)
@@ -207,7 +207,7 @@ def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=1,st
                     #ลอง print(e) แล้วเช็คกรณี error code -1111 นะครับ                    
                     act_price_SHORT = Interger + "." + decimal[:dec_count]
                     if (len_count + dec_count) == 0:
-                        act_price_SHORT = int(Interger)
+                        act_price_SHORT = int(Interger)                        
                     dec_count = dec_count - 1 
                     
         # POS_SIZE = str(stoplosePrice)

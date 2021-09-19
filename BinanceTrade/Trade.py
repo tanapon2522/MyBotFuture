@@ -49,6 +49,7 @@ def ReceiveSignals(signal_data_dict):
                 ClosePositionAtmarket(symbol=Signal_Symbol, positionSide="LONG")
             except Exception as e :
                 print(e.error_message)
+            CancelAllOrder(symbol = Signal_Symbol)
             PlaceOrderAtMarket(position=Signal_Side, symbol=Signal_Symbol, amount=amount, lev = lev)
             msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)   
             
@@ -57,6 +58,7 @@ def ReceiveSignals(signal_data_dict):
                 ClosePositionAtmarket(symbol=Signal_Symbol, positionSide="SHORT")                
             except Exception as e :
                 print(e.error_message)
+            CancelAllOrder(symbol = Signal_Symbol)
             PlaceOrderAtMarket(position=Signal_Side, symbol=Signal_Symbol, amount=amount, lev = lev)
             msg = "ทำการ {} Position ในฝั่ง {} คู่สินค้า {} ".format(Signal_Type,Signal_Side,Signal_Symbol)
         

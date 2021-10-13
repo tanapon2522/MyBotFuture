@@ -27,7 +27,8 @@ def CancelAllOrder(symbol):
 
 def getAssetUSDT():
     result = request_client.get_balance()
-    return int(result[1].balance)
+    #return int(result[1].balance)
+    return int(result[3].balance) # API มีการเปลี่ยนแปลง ค่า index
 
 #< แก้ไข เพิ่ม function 6-27-2021
 def PlaceOrderAtMarket(position,symbol,amount,lev,act_price_percent=0.01,cb=1,stoploss_Percent =5):
